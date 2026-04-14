@@ -30,4 +30,3 @@ Thumbs.db
 
 # Proprietary data 
 data/pmi.csv
-data/*.csv

@@ -3,8 +3,7 @@ import numpy as np
 from src.backtest import apply_lazy_rebalance, calculate_strategy_returns
 
 def test_apply_lazy_rebalance():
-    """Tests if the 15% hysteresis buffer correctly kills micro-turnover."""
-    # Create a target series that drifts slightly, then makes a big jump
+    """ Tests if the 15% hysteresis buffer reduces micro-turnover """
     dates = pd.date_range("2024-01-01", periods=5)
     target = pd.Series([0.50, 0.52, 0.54, 0.70, 0.71], index=dates)
     
@@ -19,7 +18,7 @@ def test_apply_lazy_rebalance():
     assert executed.iloc[4] == 0.70, "0.01 drift after rebalance should be ignored"
 
 def test_calculate_strategy_returns_costs():
-    """Tests if the transaction cost drag is calculated correctly."""
+    """ Tests if the transaction cost drag is calculated correctly """
     dates = pd.date_range("2024-01-01", periods=3)
     
     # 0% returns, so the only change in net should be the TC drag
@@ -27,7 +26,7 @@ def test_calculate_strategy_returns_costs():
     def_ret = pd.Series([0.0, 0.0, 0.0], index=dates)
     rf = pd.Series([0.0, 0.0, 0.0], index=dates)
     
-    # We change weights by 100% on day 2. 
+    # change weights by 100% on day 2. 
     # 1.0 (SPY change) + 1.0 (DEF change) = 2.0 total turnover
     sw = pd.Series([1.0, 0.0, 0.0], index=dates)
     dw = pd.Series([0.0, 1.0, 1.0], index=dates)

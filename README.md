@@ -10,7 +10,7 @@ An end-to-end quantitative research pipeline that identifies macroeconomic regim
 
 ### Headline OOS Results (2018–Present, 5bps TC)
 
-| | Apex v2 (Ours) | SPY B&H | 60/40 B&H |
+| | Apex v2 (Project) | SPY B&H | 60/40 B&H |
 |---|---|---|---|
 | **Sharpe Ratio** | **0.67** | 0.65 | 0.62 |
 | **Max Drawdown** | **-27.2%** | -33.7% | -26.4% |

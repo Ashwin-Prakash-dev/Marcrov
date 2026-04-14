@@ -76,6 +76,12 @@ def load_pmi(
     max_staleness_days: int = 45,
 ) -> pd.Series:
     
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(
+            f"PMI data file not found at '{filepath}'.\n"
+            f"See data/README.md for instructions on obtaining this file."
+        )
+    
     pmi = pd.read_csv(filepath, parse_dates=['Date'])
     pmi = pmi.set_index('Date')
     pmi.index = pd.to_datetime(pmi.index).tz_localize(None)

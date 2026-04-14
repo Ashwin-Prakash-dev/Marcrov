@@ -28,5 +28,6 @@ Thumbs.db
 *.swp
 *.swo
 
-pmi.csv
-
+# Proprietary data 
+data/pmi.csv
+data/*.csv
